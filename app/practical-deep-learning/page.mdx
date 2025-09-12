@@ -1,0 +1,37 @@
+# Foundation Concepts
+
+*"Suppose we arrange for some automatic means of testing the effectiveness of any current weight assignment in terms of actual performance and provide a mechanism for altering the weight assignment so as to maximize the performance. We need not go into the details of such a procedure to see that it could be made entirely automatic and to see that a machine so programmed would "learn" from its experience."* - Arthur Samuel
+
+## Concepts described in the above statement:
+
+- The idea of a "weight assignment" 
+
+- The fact that every weight assignment has some "actual performance"
+
+- The requirement that is an "automatic means" of testing performance
+
+- The need for a "mechanism" (i.e. another automatic process) for improving performance by changing the weight assignments
+
+**Weights** are just variables and **weight assignment** is a choice of values for those variables.
+
+A **model** is a the program that accepts inputs, a special kind of program that can do *many different things* depending on the weights; model inputs are generally referred to as *model parameters* whereas the term *weights* is reserved for a particular type of model parameter.
+
+A means of automatic testing the effectiveness of any weight assignment in terms of performance would be how well the model performs, how many results were accurate.
+
+Lastly a mechanism for altering weight assignment to maximize performance, usually human input, or more examples, which eventually leads to automatic adjustments and self learning models.
+
+## Neural Network
+
+Universal approximation theorem is a mathematical proof that shows that a neural network can solve any problem to any level of accuracy in theory.
+
+SGD stochastic gradient descent the process of updating weights automatically.
+
+- the functional form of the model is called its architecture
+
+- the weights are called parameters
+
+- the predictions are calculated from the independent variable, which is the data nit including the labels
+
+- the results of the model are called predictions
+
+- the measure of performance is called the loss
