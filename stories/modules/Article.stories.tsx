@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 import { BackgroundImage } from '../components/BackgroundImage';
 import { YouTubeEmbed } from '../components/YouTubeEmbed';
 import { Article } from './Article';
