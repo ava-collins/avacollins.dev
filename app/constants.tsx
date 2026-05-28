@@ -1,6 +1,7 @@
 type mediaimage = {
   type: string;
   url: string;
+  alt?: string;
   title?: string;
 };
 
@@ -34,6 +35,7 @@ export const worklist: WorklistProp[] = [
           {
             type: "image",
             url: "/work/expedia/expediaVAC.png",
+            alt: "Screenshot of Expedia's Virtual Agent Chat interface.",
           },
         ],
       },
@@ -56,6 +58,7 @@ export const worklist: WorklistProp[] = [
           {
             type: "image",
             url: "/work/porch/isn-app.jpg",
+            alt: "Mobile app screenshots for Porch Group and Inspection Support Network.",
           },
         ],
       },
@@ -76,6 +79,7 @@ export const worklist: WorklistProp[] = [
           {
             type: "image",
             url: "/work/sansar/homepage-evolution.png",
+            alt: "Screenshot montage showing the evolution of Sansar's homepage.",
           },
         ],
       },
@@ -90,6 +94,7 @@ export const worklist: WorklistProp[] = [
           {
             type: "image",
             url: "/work/sansar/atlas3.jpg",
+            alt: "Screenshot of the Sansar web atlas experience browser.",
           },
         ],
       },
@@ -128,10 +133,12 @@ export const worklist: WorklistProp[] = [
           {
             type: "image",
             url: "/work/sansar/iphone-screenshots.jpg",
+            alt: "iPhone screenshots of the Sansar mobile events experience.",
           },
           {
             type: "image",
             url: "/work/sansar/ticket_test.jpg",
+            alt: "Sansar virtual event ticket artwork for Lost Horizon.",
           },
         ],
       },
@@ -153,6 +160,7 @@ export const worklist: WorklistProp[] = [
           {
             type: "image",
             url: "/work/apollo/careerbootcamp.png",
+            alt: "Screenshot of the Apollo Education Career Bootcamp web application.",
           },
         ],
       },
@@ -174,6 +182,7 @@ export const worklist: WorklistProp[] = [
           {
             type: "image",
             url: "/work/amazon/homepage.png",
+            alt: "Screenshot of an Amazon homepage retail experience.",
           },
         ],
       },
@@ -193,6 +202,7 @@ export const worklist: WorklistProp[] = [
           {
             type: "image",
             url: "/work/nordstrom/view-all.png",
+            alt: "Screenshot of a Nordstrom online shopping interface.",
           },
         ],
       },
@@ -214,6 +224,7 @@ export const worklist: WorklistProp[] = [
           {
             type: "image",
             url: "/work/disney/disney-chat.png",
+            alt: "Screenshot of Disney Social Chat interface components.",
           },
         ],
       },
@@ -235,6 +246,7 @@ export const worklist: WorklistProp[] = [
           {
             type: "image",
             url: "/work/realnetworks/superpassscreen.png",
+            alt: "Screenshot of the RealNetworks SuperPass website.",
           },
         ],
       },

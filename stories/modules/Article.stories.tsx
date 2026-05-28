@@ -29,7 +29,10 @@ export const Default: Story = {
         ],
         children: (
             <React.Fragment>
-                <BackgroundImage url={`${BASE_URL}/work/expedia/expediaVAC.png`} />
+                <BackgroundImage
+                    url={`${BASE_URL}/work/expedia/expediaVAC.png`}
+                    alt="Screenshot of Expedia's Virtual Agent Chat interface."
+                />
             </React.Fragment>),
         name: 'one'
     }

@@ -14,7 +14,7 @@ export default function Work() {
             const uniq = `${id}-${i}${j}`
             const Content = d.media.map((m) => {
                 if (m.type === 'image') {
-                    return (<BackgroundImage url={m.url} key={m.url} />)
+                    return (<BackgroundImage url={m.url} alt={m.alt ?? d.title} key={m.url} />)
                 } else {
                     return (<YouTubeEmbed url={m.url} title={m.title ? m.title : ''} key={m.url} />)
                 }

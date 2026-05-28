@@ -24,6 +24,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     args: {
-        url: `${BASE_URL}/work/expedia/expediaVAC.png`
+        url: `${BASE_URL}/work/expedia/expediaVAC.png`,
+        alt: "Screenshot of Expedia's Virtual Agent Chat interface.",
     }
 }
