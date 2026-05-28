@@ -25,6 +25,7 @@ export const Button = ({
     <button
       type="button"
       className={['button', mode].join(' ')}
+      style={{ backgroundColor }}
       {...props}
     >
       {label}

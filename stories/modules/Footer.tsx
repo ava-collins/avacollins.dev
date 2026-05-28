@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import "./footer.css"
-import { BASE_URL } from '../constants'
 
 export interface FooterProps {
     /** tagline - Line of text above footer image*/

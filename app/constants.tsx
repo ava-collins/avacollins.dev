@@ -131,7 +131,7 @@ export const worklist: WorklistProp[] = [
           },
           {
             type: "image",
-            url: "work/sansar/ticket_test.jpg",
+            url: "/work/sansar/ticket_test.jpg",
           },
         ],
       },

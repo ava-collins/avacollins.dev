@@ -7,12 +7,12 @@ import { YouTubeEmbed } from "@/stories/components/YouTubeEmbed";
 
 export default function Work() {
     const articles = worklist.map((w: WorklistProp, i: number) => {
-        let alignment = i % 2 === 0 ? 'left' : 'right';
-        let id = w.name.toLowerCase();
+        const alignment = i % 2 === 0 ? 'left' : 'right';
+        const id = w.name.toLowerCase();
 
-        let details = w.details.map((d, j) => {
-            let uniq = `${id}-${i}${j}`
-            let Content = d.media.map((m, i) => {
+        const details = w.details.map((d, j) => {
+            const uniq = `${id}-${i}${j}`
+            const Content = d.media.map((m) => {
                 if (m.type === 'image') {
                     return (<BackgroundImage url={m.url} key={m.url} />)
                 } else {
