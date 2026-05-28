@@ -17,7 +17,7 @@ export interface ArticleProps {
 
 export const Article = ({ align = 'left', title, text, children, name }: ArticleProps) => {
     const style = align === 'left' ? 'article' : ['article', align].join(' ')
-    const content = text.map((t) => (<p key={t.substring(2, 10).replace(' ', '')}>{t}</p>))
+    const content = text.map((t, index) => (<p key={`${name}-paragraph-${index}`}>{t}</p>))
     return (
         <article className={style} id={name}>
             <div className="text">
