@@ -39,7 +39,7 @@ export const Card = ({ title, name, description, image, link, isResponsive }: Ca
                             fill
                         />
                     </div>
-                    <h2>{name}</h2>
+                    <h3>{name}</h3>
                 </div>
             </Link>
         </div>

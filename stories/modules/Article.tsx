@@ -1,6 +1,6 @@
-import React, { ReactNode } from "react";
-
 import "./article.css"
+
+import React, { ReactNode } from "react";
 
 export interface ArticleProps {
     /** alignment - left/right */

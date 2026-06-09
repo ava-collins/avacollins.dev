@@ -46,7 +46,7 @@
     background-color: #fff;
 }
 
-.card:hover h2 {
+.card:hover h3 {
     color: black;
 }
 
@@ -61,7 +61,7 @@
     min-height: 6rem;
 }
 
-.card h2 {
+.card h3 {
     align-self: center;
     color: #fff;
     letter-spacing: .25rem;

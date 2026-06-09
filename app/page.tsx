@@ -5,26 +5,16 @@ import { Hero } from "../stories/modules/Hero";
 import React from "react";
 import { worklist } from "./constants";
 
-const GITHUB_URL = "https://github.com/ava-collins?tab=repositories&q=&type=public&language=&sort=";
+const GITHUB_URL =
+  "https://github.com/ava-collins?tab=repositories&q=&type=public&language=&sort=";
 const LINKEDIN_URL = "https://www.linkedin.com/in/avacollins-dev/";
 
 export default function Home() {
   const work = worklist.map((exp, i) => {
-    const link = `/work#${exp.name.toLowerCase()}`;
-    if (i === 0) {
-      return (
-        <Card
-          title="work"
-          name={exp.name}
-          description={exp.description}
-          image={exp.image}
-          link={link}
-          key={exp.name}
-        />
-      );
-    }
+    const link = `/work#${exp.name.replace(" ", "-").toLowerCase()}`;
     return (
       <Card
+        title={i === 0 ? "work" : undefined}
         name={exp.name}
         description={exp.description}
         image={exp.image}
