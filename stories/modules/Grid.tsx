@@ -1,6 +1,6 @@
-import React, { ReactNode } from "react";
-
 import "./grid.css"
+
+import React, { ReactNode } from "react";
 
 export interface GridProps {
     /** Style for grid contents - work and play are the only two options */
@@ -11,7 +11,7 @@ export interface GridProps {
 
 export const Grid = ({ style, children }: GridProps) => {
     return (
-        <section className={style}>
+        <section className={style} id="work">
             <div className="grid">
                 {children}
             </div>

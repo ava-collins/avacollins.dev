@@ -43,6 +43,11 @@ p {
     height: 100%;
 }
 
+.homelink {
+    font-size: 1.4rem;
+    color: #fff;
+}
+
 @media screen and (max-width: 1024px) {
 
     .article,
