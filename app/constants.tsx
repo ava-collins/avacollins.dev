@@ -1,5 +1,5 @@
 type mediaimage = {
-  type: string;
+  type: 'image' | 'video';
   url: string;
   alt?: string;
   title?: string;

@@ -1,8 +1,8 @@
-"use client";
-import React from "react";
+import { WorklistProp, worklist } from "../constants";
+
 import { Article } from "@/stories/modules/Article";
 import { BackgroundImage } from "@/stories/components/BackgroundImage";
-import { worklist, WorklistProp } from "../constants";
+import React from "react";
 import { YouTubeEmbed } from "@/stories/components/YouTubeEmbed";
 
 export default function Work() {

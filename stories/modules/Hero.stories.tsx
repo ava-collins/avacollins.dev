@@ -1,6 +1,5 @@
 import React from "react";
 import type { Meta, StoryObj } from '@storybook/nextjs';
-import { fn } from 'storybook/test';
 
 import { Hero } from "../modules/Hero"
 
@@ -18,8 +17,8 @@ const meta = {
         abouttext: { control: 'text' }
     },
     args: {
-        resume: fn(),
-        connect: fn()
+        resumeHref: "https://github.com/ava-collins",
+        connectHref: "https://www.linkedin.com/in/avacollins-dev/"
     }
 } satisfies Meta<typeof Hero>;
 
@@ -31,7 +30,7 @@ export const Default: Story = {
         abouttext: `Ambitious developer with a long history of bringing to life
               interactive experiences for retail, education and games. Skilled
               in prototype to MVP launches (aka zero to one), frontend architecture, build pipelines for continous integrations, web accessibility and
-              user experience requirements, third party integrations, performance and security monitoring, 
+              user experience requirements, third party integrations, performance and security monitoring,
               documentation and user support.`
     }
 }

@@ -1,8 +1,8 @@
-import React from "react";
+import "./card.css"
+
 import Image from "next/image";
 import Link from "next/link";
-
-import "./card.css"
+import React from "react";
 
 export interface CardProps {
     /** Optional title that is displayed above card uses this text */
@@ -23,7 +23,7 @@ export const Card = ({ title, name, description, image, link, isResponsive }: Ca
     const wrapper = isResponsive ? title ? ['firstslot', 'firstresponsive'].join(' ') : ['slot', 'responsive'].join(' ') : 'slot';
     const content = title ? ['firstcard', 'card'].join(' ') : 'card';
     const titleblock = title ? (<div className="title">
-        <h1>{title}</h1>
+        <h2>{title}</h2>
     </div>) : (<span></span>)
 
     return (

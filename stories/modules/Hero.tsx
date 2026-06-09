@@ -8,13 +8,13 @@ import "./hero.css"
 export interface HeroProps {
     /** Text for the About section of the Hero */
     abouttext: string;
-    /** Navigate to Resume click handler */
-    resume: () => void;
-    /** Navigate to Connect click handler */
-    connect: () => void;
+    /** GitHub profile URL */
+    resumeHref: string;
+    /** LinkedIn profile URL */
+    connectHref: string;
 }
 
-export const Hero = ({ abouttext, resume, connect }: HeroProps) => (
+export const Hero = ({ abouttext, resumeHref, connectHref }: HeroProps) => (
     <React.Fragment>
         <section className="intro">
             <Selfie />
@@ -32,8 +32,8 @@ export const Hero = ({ abouttext, resume, connect }: HeroProps) => (
                 <p>{abouttext}</p>
             </div>
             <div className="buttongroup">
-                <Button label="GitHub" onClick={resume} primary />
-                <Button label="LinkedIn" onClick={connect} />
+                <Button label="GitHub" href={resumeHref} primary />
+                <Button label="LinkedIn" href={connectHref} />
             </div>
         </section>
     </React.Fragment>
