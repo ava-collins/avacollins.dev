@@ -107,7 +107,7 @@ export async function POST(request: NextRequest) {
     const lexClient = new LexRuntimeV2Client({
       region,
       credentials: awsCredentialsProvider({
-        roleArn: process.env.AWS_LEX_READ_ROLE!,
+        roleArn: process.env.AWS_ROLE_ARN!,
       }),
     });
     const lexResponse = await lexClient.send(
