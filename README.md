@@ -48,6 +48,21 @@ yarn build-storybook  # Static Storybook → storybook-static/
 yarn lint             # ESLint
 ```
 
+## Chatbot configuration
+
+The site integrates with the deployed Amazon Lex V2 chatbot through a server-side Next.js API route. The browser should call the local API route, not Lex directly, so AWS credentials and bot configuration stay on the server.
+
+Copy `.env.example` to a local env file and fill in the deployed Lex values:
+
+```bash
+AWS_REGION=us-east-1
+LEX_BOT_ID=
+LEX_BOT_ALIAS_ID=
+LEX_LOCALE_ID=en_US
+```
+
+The API route should use the AWS SDK default credential provider chain: deployment IAM role in production, or a local AWS profile/environment credentials during development. The runtime identity needs permission to call `lex:RecognizeText` for the deployed bot alias. Do not add `NEXT_PUBLIC_*` Lex or AWS credential variables unless the architecture changes to make browser-side AWS calls.
+
 ## Deployment
 
 - **Site** — deployed to Vercel on push to `main`: [avacollins.dev](https://www.avacollins.dev)
