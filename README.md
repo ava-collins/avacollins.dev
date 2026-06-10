@@ -64,6 +64,21 @@ LEX_LOCALE_ID=en_US
 
 The API route should use the AWS SDK default credential provider chain: deployment IAM role in production, or a local AWS profile/environment credentials during development. The runtime identity needs permission to call `lex:RecognizeText` for the deployed bot alias. Do not add `NEXT_PUBLIC_*` Lex or AWS credential variables unless the architecture changes to make browser-side AWS calls.
 
+Example IAM policy for the production runtime role:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "lex:RecognizeText",
+      "Resource": "arn:aws:lex:<region>:<account-id>:bot-alias/<bot-id>/<bot-alias-id>"
+    }
+  ]
+}
+```
+
 ## Deployment
 
 - **Site** — deployed to Vercel on push to `main`: [avacollins.dev](https://www.avacollins.dev)

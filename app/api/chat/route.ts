@@ -4,6 +4,8 @@ import {
 } from "@aws-sdk/client-lex-runtime-v2";
 import { NextRequest, NextResponse } from "next/server";
 
+import { awsCredentialsProvider } from "@vercel/oidc-aws-credentials-provider";
+
 // Tells Next.js to run this API route in the Node.js runtime, not the Edge runtime
 export const runtime = "nodejs";
 
@@ -102,7 +104,12 @@ export async function POST(request: NextRequest) {
 
   try {
     const { region, botId, botAliasId, localeId } = getLexConfig();
-    const lexClient = new LexRuntimeV2Client({ region });
+    const lexClient = new LexRuntimeV2Client({
+      region,
+      credentials: awsCredentialsProvider({
+        roleArn: process.env.AWS_LEX_READ_ROLE!,
+      }),
+    });
     const lexResponse = await lexClient.send(
       new RecognizeTextCommand({
         botId,
