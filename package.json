@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
+    "test:api": "node --test tests/api-chat.test.mjs",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },

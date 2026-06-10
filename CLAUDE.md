@@ -8,6 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 yarn dev          # Start Next.js dev server (localhost:3000)
 yarn build        # Production build
 yarn lint         # ESLint
+yarn test:api     # API route validation tests
 yarn storybook    # Storybook dev server (localhost:6006)
 yarn build-storybook  # Build static Storybook to storybook-static/
 ```

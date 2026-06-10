@@ -46,11 +46,12 @@ yarn storybook        # Storybook dev server →  localhost:6006
 yarn build            # Production build
 yarn build-storybook  # Static Storybook → storybook-static/
 yarn lint             # ESLint
+yarn test:api         # API route validation tests
 ```
 
 ## Chatbot configuration
 
-The site integrates with the deployed Amazon Lex V2 chatbot through a server-side Next.js API route. The browser should call the local API route, not Lex directly, so AWS credentials and bot configuration stay on the server.
+The site integrates with a deployed Amazon Lex V2 chatbot through a server-side Next.js API route. The browser should call the local API route, not Lex directly, so AWS credentials and bot configuration stay on the server.
 
 Copy `.env.example` to a local env file and fill in the deployed Lex values:
 
