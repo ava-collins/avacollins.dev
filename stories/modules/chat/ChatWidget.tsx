@@ -26,6 +26,7 @@ export interface ChatWidgetProps {
   greeting?: string;
   launcherLabel?: string;
   placeholder?: string;
+  apiEndpoint?: string;
   initialOpen?: boolean;
   initialInput?: string;
   initialMessages?: ChatMessage[];
@@ -37,16 +38,7 @@ export interface ChatWidgetProps {
 const DEFAULT_GREETING =
   "Hi, I am Ava's interview assistant. Ask me about her JavaScript, React, Node, or AWS experience.";
 
-const defaultAssistantReply: ChatWidgetProps["onSendMessage"] = async (
-  message,
-) => ({
-  messages: [
-    {
-      role: "assistant",
-      content: `I heard: "${message}". Lex integration will answer this once the API route is connected.`,
-    },
-  ],
-});
+const LEX_SESSION_STORAGE_KEY = "lex_chat_session_id";
 
 const createMessageId = () => {
   if (typeof crypto !== "undefined" && "randomUUID" in crypto) {
@@ -56,17 +48,66 @@ const createMessageId = () => {
   return `message-${Date.now()}-${Math.random().toString(16).slice(2)}`;
 };
 
+const getLexSessionId = () => {
+  const existingSessionId = window.localStorage.getItem(
+    LEX_SESSION_STORAGE_KEY,
+  );
+
+  if (existingSessionId) {
+    return existingSessionId;
+  }
+
+  const nextSessionId = createMessageId();
+  window.localStorage.setItem(LEX_SESSION_STORAGE_KEY, nextSessionId);
+
+  return nextSessionId;
+};
+
+const sendMessageToChatApi = async (
+  apiEndpoint: string,
+  message: string,
+): Promise<ChatWidgetResponse> => {
+  const response = await fetch(apiEndpoint, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      message,
+      sessionId: getLexSessionId(),
+    }),
+  });
+  const body = (await response.json()) as
+    | ChatWidgetResponse
+    | { error?: string };
+
+  if (!response.ok) {
+    throw new Error(
+      "error" in body && body.error
+        ? body.error
+        : "I could not reach the assistant. Please try again.",
+    );
+  }
+
+  if (!("messages" in body) || !Array.isArray(body.messages)) {
+    throw new Error("The assistant returned an unexpected response.");
+  }
+
+  return body;
+};
+
 export const ChatWidget = ({
   title = "Interview assistant",
   greeting = DEFAULT_GREETING,
   launcherLabel = "Chat",
   placeholder = "Ask a question",
+  apiEndpoint = "/api/chat",
   initialOpen = false,
   initialInput = "",
   initialMessages,
   initialIsLoading = false,
   initialError,
-  onSendMessage = defaultAssistantReply,
+  onSendMessage,
 }: ChatWidgetProps) => {
   const seededMessages = useMemo<ChatMessage[]>(
     () =>
@@ -124,7 +165,9 @@ export const ChatWidget = ({
     setError(undefined);
 
     try {
-      const response = await onSendMessage(nextMessage);
+      const response = await (onSendMessage
+        ? onSendMessage(nextMessage)
+        : sendMessageToChatApi(apiEndpoint, nextMessage));
       const assistantMessages = response.messages.map((message) => ({
         ...message,
         id: message.id ?? createMessageId(),
@@ -134,8 +177,12 @@ export const ChatWidget = ({
         ...currentMessages,
         ...assistantMessages,
       ]);
-    } catch {
-      setError("I could not reach the assistant. Please try again.");
+    } catch (sendError) {
+      setError(
+        sendError instanceof Error
+          ? sendError.message
+          : "I could not reach the assistant. Please try again.",
+      );
     } finally {
       setIsLoading(false);
     }

@@ -60,6 +60,8 @@ AWS_REGION=us-east-1
 LEX_BOT_ID=
 LEX_BOT_ALIAS_ID=
 LEX_LOCALE_ID=en_US
+AWS_ROLE_ARN=
+CHAT_WIDGET_ENABLED=false
 ```
 
 The API route should use the AWS SDK default credential provider chain: deployment IAM role in production, or a local AWS profile/environment credentials during development. The runtime identity needs permission to call `lex:RecognizeText` for the deployed bot alias. Do not add `NEXT_PUBLIC_*` Lex or AWS credential variables unless the architecture changes to make browser-side AWS calls.

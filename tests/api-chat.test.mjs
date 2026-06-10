@@ -3,7 +3,7 @@ import { spawn } from "node:child_process";
 import { after, before, test } from "node:test";
 
 const PORT = 3210;
-const BASE_URL = `http://127.0.0.1:${PORT}`;
+const BASE_URL = `http://localhost:${PORT}`;
 const STARTUP_TIMEOUT_MS = 15000;
 
 let nextServer;
@@ -38,7 +38,7 @@ const postChat = async (body) =>
   });
 
 before(async () => {
-  nextServer = spawn("yarn", ["dev", "--port", String(PORT)], {
+  nextServer = spawn("yarn", ["start", "--port", String(PORT)], {
     cwd: process.cwd(),
     env: {
       ...process.env,
